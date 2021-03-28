@@ -1,34 +1,32 @@
 <template>
   <div id="app">
-    <router-view
-      @setPageMode="setPageMode"
-      @setFullscreen="setFullscreen"
-    ></router-view>
+    <div class="container">
+      <router-view
+        @setPageMode="setPageMode"
+        @setFullscreen="setFullscreen"
+      ></router-view>
+    </div>
   </div>
 </template>
 <script>
+// import * as api from "./api/index";
+// import { mapMutations, mapState } from "vuex";
 export default {
+  name: "App",
+  components: {},
   data() {
     return {
       pageMode: "Main",
-      fullscreen: true,
+      fullscreen: false,
     };
   },
+  computed: {
+    // ...mapState(["token"]),
+  },
   methods: {
-    setPageMode: function (mode, query) {
-      console.log("App.vue page mode : " + mode);
-      if (this.pageMode != mode) {
-        if (query) {
-          this.$router.push({ name: mode, query: query });
-        } else {
-          this.$router.push({ name: mode });
-        }
-        this.pageMode = mode;
-        if (this.pageMode == "Main") {
-          this.onScroll();
-        }
-      }
-    },
+    findId() {},
+    findPwd() {},
+
     setFullscreen: function (bool) {
       this.fullscreen = bool;
     },
@@ -84,8 +82,83 @@ button {
   width: 100vw;
   height: 100vh;
 }
-
-.bg {
+.container {
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  color: #888;
+  background-color: white;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+.contents {
+  height: 100%;
+  padding: 0px 40px;
   background-color: #ffeecb;
+}
+
+header .logo {
+  width: 60%;
+  height: 20%;
+  padding: 5% 0 10%;
+  margin: 0 auto;
+  text-align: center;
+}
+header .logo img {
+  width: 100%;
+}
+main .login {
+  text-align: center;
+}
+main .login input {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+.auto-login {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.auto-login input {
+  margin-right: 5px;
+}
+.submit-login {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit-login button:first-child {
+  color: gray;
+  background-color: #fbc65d;
+}
+.help-login {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.help-login div {
+  margin: 0 5px;
+  cursor: pointer;
+}
+footer .sns-login button {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  padding: 10px;
+  border-radius: 10px;
+}
+footer .sns-login .kakao-login {
+  color: #391b1b;
+  background-color: #fae301;
 }
 </style>
