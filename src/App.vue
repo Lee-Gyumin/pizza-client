@@ -26,7 +26,20 @@ export default {
   methods: {
     findId() {},
     findPwd() {},
-
+    setPageMode: function (mode, query) {
+      console.log("App.vue page mode : " + mode);
+      if (this.pageMode != mode) {
+        if (query) {
+          this.$router.push({ name: mode, query: query });
+        } else {
+          this.$router.push({ name: mode });
+        }
+        this.pageMode = mode;
+        if (this.pageMode == "Main") {
+          this.onScroll();
+        }
+      }
+    },
     setFullscreen: function (bool) {
       this.fullscreen = bool;
     },
