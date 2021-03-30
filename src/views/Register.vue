@@ -31,21 +31,39 @@
           <li>
             <div>전화번호</div>
             <div class="certified">
-              <div><input type="text" placeholder="'-' 없이 입력" /></div>
-              <div><input type="text" placeholder="인증번호 입력" /></div>
+              <div>
+                <input type="text" placeholder="'-' 없이 입력" /><button>
+                  인증
+                </button>
+              </div>
+              <div>
+                <input type="text" placeholder="인증번호 입력" /><button>
+                  확인
+                </button>
+              </div>
             </div>
           </li>
         </ul>
       </main>
       <footer>
-        <div>약관동의</div>
+        <h1>약관동의</h1>
         <div>모두동의</div>
-        <div>
+        <div class="terms">
           <ul>
-            <li><div>[필수] 피자페이 서비스 이용약관 동의</div></li>
-            <li><div>[필수] 개인정보 수집 및 이용 동의</div></li>
-            <li><div>[선택] 마케팅 정보 수신에 대한 동의</div></li>
+            <li>
+              <div><span>[필수]</span> 피자페이 서비스 이용약관 동의</div>
+            </li>
+            <li>
+              <div><span>[필수]</span> 개인정보 수집 및 이용 동의</div>
+            </li>
+            <li>
+              <div><span>[선택]</span> 마케팅 정보 수신에 대한 동의</div>
+            </li>
           </ul>
+        </div>
+        <div class="submit-join">
+          <div><button>회원가입 완료</button></div>
+          <div>고객센터 02-1111-1010</div>
         </div>
       </footer>
     </div>
@@ -68,6 +86,7 @@ export default {
 <style scoped>
 header {
   height: 50px;
+  background-color: white;
   line-height: 50px;
   position: fixed;
   top: 0;
@@ -75,7 +94,7 @@ header {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid gray;
 }
 header div {
   height: 100%;
@@ -92,6 +111,7 @@ header div {
 .contents {
   height: calc(100vh - 50px);
   margin-top: 50px;
+  padding: 0 !important;
   background-color: white !important;
 }
 .contents main {
@@ -118,6 +138,24 @@ header div {
   border-radius: 5px;
   overflow: hidden;
 }
+.info .certified div {
+  display: flex;
+  position: relative;
+}
+.info .certified div button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  margin: 0;
+  box-shadow: none;
+  color: rgb(211, 211, 211);
+  border: 1px solid rgb(211, 211, 211);
+  border-radius: 5px;
+  padding: 5px;
+  height: auto;
+  background-color: rgb(240, 240, 240);
+}
 .info .certified input {
   border: none;
 }
@@ -137,5 +175,36 @@ input::placeholder {
 }
 footer {
   padding: 20px;
+}
+footer h1 {
+  font-size: 2rem;
+}
+footer div {
+  font-size: 1.7rem;
+  margin: 10px 0;
+}
+footer .terms {
+  border-top: 1px solid rgb(172, 172, 172);
+}
+footer .terms ul li {
+  margin: 20px 0;
+}
+footer .terms ul li div {
+  text-decoration: underline;
+}
+footer .terms ul li div span {
+  font-weight: bold;
+  color: #fb892b;
+}
+footer .submit-join {
+  text-align: center;
+  margin: 30px 0 10px;
+}
+footer .submit-join button {
+  width: 100%;
+  color: gray;
+  box-shadow: none;
+  padding: 10px;
+  background-color: rgb(211, 211, 211);
 }
 </style>

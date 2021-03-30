@@ -48,7 +48,7 @@ export default {
 </script>
 <style>
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 3px;
   height: 8px;
 } /* this targets the default scrollbar (compulsory) */
 ::-webkit-scrollbar-track {
