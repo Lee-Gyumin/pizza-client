@@ -40,16 +40,26 @@
                 >( <span class="point"> {{ data.point }}</span> 적립)</span
               >
             </div>
-            <div><button>자세히보기</button></div>
+            <div><button @click="goDetail()">자세히보기</button></div>
           </div>
         </li>
       </ul>
     </main>
-    <footer
-      class="float-btn"
-      :class="{ active: showFloat }"
-      @click="showFloatMenu"
-    ></footer>
+    <footer class="float-btn">
+      <div
+        class="button"
+        :class="{ active: showFloat }"
+        @click="showFloatMenu"
+      ></div>
+      <div class="filter" :class="{ active: showFloat }">
+        <ul>
+          <li>정렬</li>
+          <li>전체보기</li>
+          <li>최신순</li>
+          <li>미완료</li>
+        </ul>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -99,6 +109,9 @@ export default {
     },
     showFloatMenu() {
       this.showFloat = !this.showFloat;
+    },
+    goDetail() {
+      this.$router.push({ name: "paymentdetail" });
     },
   },
 };
@@ -198,7 +211,7 @@ main .pizza-list .name {
   justify-content: space-between;
   align-items: center;
   line-height: 35px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 main .pizza-list .name .logo {
   width: 35px;
@@ -240,13 +253,20 @@ footer.float-btn {
   height: 50px;
   background-color: #ff8800;
   border-radius: 50%;
+  transition: 0.2s;
+}
+
+footer.float-btn .button {
+  width: 50px;
+  height: 50px;
   transition: 0.3s;
 }
-footer.float-btn.active {
-  transform: rotate(45deg);
+footer.float-btn .button.active {
+  transform: rotate(225deg);
 }
-footer.float-btn::before,
-footer.float-btn::after {
+
+footer.float-btn .button::before,
+footer.float-btn .button::after {
   content: "";
   position: absolute;
   top: 23px;
@@ -257,8 +277,31 @@ footer.float-btn::after {
   background-color: white;
 }
 
-footer.float-btn::after {
+footer.float-btn .button::after {
   transform: rotate(90deg);
-  right: 50%;
+}
+footer .filter {
+  position: absolute;
+  width: 120px;
+  bottom: -340%;
+  right: 5px;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  font-size: 1.7rem;
+  transition: 0.4s;
+  opacity: 0;
+}
+footer .filter.active {
+  bottom: 110%;
+  opacity: 1;
+}
+footer .filter li {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+footer .filter li:first-child {
+  text-align: center;
 }
 </style>

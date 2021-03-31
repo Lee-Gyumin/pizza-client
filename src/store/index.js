@@ -1,17 +1,25 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import createPersistedState from 'vuex-persistedstate'
+import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  plugins: [
-    createPersistedState({
-        paths: ['token', 'userInfo', 'rememberId', 'autoLogin'],
-    }),
-],
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
+    plugins: [
+        createPersistedState({
+            paths: ["token", "userInfo", "rememberId", "autoLogin"],
+        }),
+    ],
+    state: {
+        userInfo: {
+            userName: "",
+            userSeq: 0,
+            userEmail: "",
+            userPoint: 0,
+        },
+        token: "",
+    },
+    mutations: {},
+    actions: {},
+    modules: {},
 });

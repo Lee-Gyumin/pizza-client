@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Main from "@/views/Main";
 import Register from "@/views/Register.vue";
 import Home from "@/views/Home.vue";
+import PaymentDetail from "@/views/PaymentDetail.vue";
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const router = new VueRouter({
             path: "/home",
             name: "home",
             component: Home,
+        },
+        {
+            path: "/paymentdetail",
+            name: "paymentdetail",
+            component: PaymentDetail,
         },
     ],
 });
