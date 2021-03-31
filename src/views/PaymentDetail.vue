@@ -23,7 +23,7 @@
           <li>
             <div>더 스카이밸리1차 2층</div>
           </li>
-          <li>메뉴</li>
+          <li>-메뉴</li>
           <li class="menu">
             <div>1.닭도리탕*2</div>
             <div>24000</div>
@@ -109,7 +109,7 @@ header div {
   display: flex;
   justify-content: flex-end;
   font-size: 2.8rem;
-  padding: 10px 10px 20px;
+  padding: 20px;
 }
 .info li {
   padding: 10px 20px;
