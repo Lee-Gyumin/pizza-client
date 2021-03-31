@@ -95,6 +95,7 @@ button {
   width: 100vw;
   height: 100vh;
 }
+
 .container {
   height: 100%;
   overflow-y: auto;
@@ -114,15 +115,33 @@ button {
   padding: 0px 40px;
   background-color: #ffeecb;
 }
+header {
+  height: 50px;
+  background-color: white;
+  line-height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+}
 
-header .logo {
+.hamburgur {
+  width: 50px;
+}
+.hamburgur img {
+  width: 80%;
+}
+.header .logo {
   width: 60%;
   height: 20%;
   padding: 5% 0 10%;
   margin: 0 auto;
   text-align: center;
 }
-header .logo img {
+.header .logo img {
   width: 100%;
 }
 main .login {
@@ -173,5 +192,11 @@ footer .sns-login button {
 footer .sns-login .kakao-login {
   color: #391b1b;
   background-color: #fae301;
+}
+
+@media (max-width: 340px) {
+  html {
+    font-size: 6px;
+  }
 }
 </style>

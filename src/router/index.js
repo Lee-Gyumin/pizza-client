@@ -2,25 +2,28 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Main from "@/views/Main";
 import Register from "@/views/Register.vue";
-
+import Home from "@/views/Home.vue";
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-  routes:[
-    {
-      path:'/',
-      name:'main',
-      component:Main,
-    },
-    {
-      path:'/register',
-      name:'register',
-      component:Register
-    }
-  ]
-})
-
+    routes: [{
+            path: "/",
+            name: "main",
+            component: Main,
+        },
+        {
+            path: "/register",
+            name: "register",
+            component: Register,
+        },
+        {
+            path: "/home",
+            name: "home",
+            component: Home,
+        },
+    ],
+});
 
 // 로그인 여부 검사
 // router.beforeEach((to, from, next) => {
@@ -34,6 +37,5 @@ const router = new VueRouter({
 //       path: '/Login',
 //   });
 // });
-
 
 export default router;

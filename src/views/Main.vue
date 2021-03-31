@@ -1,10 +1,10 @@
 <template>
   <div class="contents">
-    <header>
+    <div class="header">
       <div class="logo">
         <img src="../assets/images/pizza-logo.png" alt="" />
       </div>
-    </header>
+    </div>
     <main>
       <div class="login">
         <input type="text" placeholder="아이디(이메일주소)" />

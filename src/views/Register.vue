@@ -62,7 +62,7 @@
           </ul>
         </div>
         <div class="submit-join">
-          <div><button>회원가입 완료</button></div>
+          <div @click="submitJoin()"><button>회원가입 완료</button></div>
           <div>고객센터 02-1111-1010</div>
         </div>
       </footer>
@@ -80,22 +80,13 @@ export default {
     goBack() {
       this.$router.push({ name: "main" });
     },
+    submitJoin() {
+      this.$router.push({ name: "home" });
+    },
   },
 };
 </script>
 <style scoped>
-header {
-  height: 50px;
-  background-color: white;
-  line-height: 50px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid gray;
-}
 header div {
   height: 100%;
   width: 25%;
