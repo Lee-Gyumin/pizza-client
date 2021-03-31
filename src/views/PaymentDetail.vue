@@ -81,7 +81,7 @@ header div {
   background-color: white !important;
 }
 .contents main {
-  padding: 10px;
+  padding: 20px 10px;
 }
 .contents main ul {
   font-size: 2rem;
@@ -109,6 +109,7 @@ header div {
   display: flex;
   justify-content: flex-end;
   font-size: 2.8rem;
+  padding: 10px 10px 20px;
 }
 .info li {
   padding: 10px 20px;
