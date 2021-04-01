@@ -16,8 +16,12 @@
         </div>
       </div>
       <ul class="menu">
-        <li :class="{ active: isActive }" @click="toggleActive()">결제내역</li>
-        <li>모임통장</li>
+        <li :class="{ active: isActive === 1 }" @click="toggleActive(1)">
+          결제내역
+        </li>
+        <li :class="{ active: isActive === 2 }" @click="toggleActive(2)">
+          모임통장
+        </li>
       </ul>
     </header>
     <main>
@@ -69,7 +73,7 @@ export default {
   components: {},
   data() {
     return {
-      isActive: true,
+      isActive: 1,
       showFloat: false,
       pizzaList: [
         {
@@ -104,8 +108,8 @@ export default {
     };
   },
   methods: {
-    toggleActive() {
-      this.isActive = !this.isActive;
+    toggleActive(val) {
+      this.isActive = val;
     },
     showFloatMenu() {
       this.showFloat = !this.showFloat;
@@ -249,16 +253,16 @@ footer.float-btn {
   position: fixed;
   bottom: 10px;
   right: 10px;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-color: #ff8800;
   border-radius: 50%;
   transition: 0.2s;
 }
 
 footer.float-btn .button {
-  width: 50px;
-  height: 50px;
+  width: 100%;
+  height: 100%;
   transition: 0.3s;
 }
 footer.float-btn .button.active {
@@ -269,10 +273,10 @@ footer.float-btn .button::before,
 footer.float-btn .button::after {
   content: "";
   position: absolute;
-  top: 23px;
-  left: 10px;
+  top: 18px;
+  left: 8px;
   border-radius: 10px;
-  width: 30px;
+  width: 25px;
   height: 4px;
   background-color: white;
 }

@@ -23,7 +23,7 @@
           <li>
             <div>더 스카이밸리1차 2층</div>
           </li>
-          <li>-메뉴</li>
+          <li class="receipt"><div></div></li>
           <li class="menu">
             <div>1.닭도리탕*2</div>
             <div>24000</div>
@@ -42,9 +42,44 @@
         </ul>
       </main>
       <footer>
-        <div><button>공유하기</button></div>
+        <div><button @click="showPop()">공유하기</button></div>
       </footer>
+      <div class="share-pop" :class="{ active: popActive }">
+        <div class="share-main">
+          <div class="share-header"><div>더치페이 방법 선택</div></div>
+          <div class="share-contents">
+            <ul>
+              <li class="check">
+                <label for="1">
+                  <input type="radio" checked name="radio-answer" id="1" />
+                  <div>
+                    <div>34000원 / 인원수</div>
+                    <div>인원수 : <input type="number" /> 명</div>
+                  </div>
+                </label>
+              </li>
+              <li class="check">
+                <label for="2"
+                  ><input type="radio" name="radio-answer" id="2" />
+                  <div>메뉴별 송급</div>
+                </label>
+              </li>
+              <li class="check">
+                <label for="3"
+                  ><input type="radio" name="radio-answer" id="3" />
+                  <div>송금액 개별 설정</div>
+                </label>
+              </li>
+            </ul>
+          </div>
+          <div class="share-button">
+            <button @click="showPop()">취소</button>
+            <button @click="goShare()">공유하기</button>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="bg" :class="{ active: popActive }"></div>
   </div>
 </template>
 
@@ -52,16 +87,27 @@
 export default {
   name: "paymentDetail",
   data() {
-    return {};
+    return {
+      popActive: false,
+    };
   },
   methods: {
     goBack() {
       this.$router.push({ name: "home" });
     },
+    showPop() {
+      this.popActive = !this.popActive;
+    },
+    goShare() {
+      this.$router.push({ name: "share" });
+    },
   },
 };
 </script>
 <style scoped>
+.wrap {
+  font-size: 2rem;
+}
 header div {
   height: 100%;
   width: 30%;
@@ -111,6 +157,29 @@ header div {
   font-size: 2.8rem;
   padding: 20px;
 }
+.info .receipt {
+  position: relative;
+}
+.info .receipt div {
+  width: 100%;
+  height: 2px;
+  background-color: gray;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.info .receipt div::after {
+  content: "주문내역";
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999999;
+  background-color: #ffeecb;
+}
+
 .info li {
   padding: 10px 20px;
 }
@@ -125,5 +194,75 @@ footer button {
   width: 50%;
   border: 1px solid gray;
   margin: 0;
+}
+.share-pop {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  border-radius: 15px;
+  border: 1px solid gray;
+  z-index: 9999;
+}
+.share-pop.active {
+  display: block;
+}
+.share-pop .share-main {
+  height: 100%;
+}
+
+.share-pop .share-header {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid gray;
+}
+.share-pop .share-contents {
+  width: 100%;
+  padding: 20px;
+}
+.share-pop .share-contents ul li {
+  margin-bottom: 30px;
+}
+.share-pop .share-contents li.check {
+  display: flex;
+  justify-content: end;
+  align-items: baseline;
+}
+.share-pop .share-contents li.check label {
+  display: flex;
+  align-items: baseline;
+}
+.share-pop .share-contents li.check input {
+  width: 50px;
+  text-align: center;
+}
+.share-button {
+  display: flex;
+  justify-content: space-evenly;
+}
+.share-button button {
+  width: 40%;
+  margin: 0;
+  background-color: #ffeecb;
+  margin-bottom: 30px;
+}
+.share-button button:first-child {
+  background-color: gainsboro;
+}
+.bg {
+  display: none;
+}
+.bg.active {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
 }
 </style>

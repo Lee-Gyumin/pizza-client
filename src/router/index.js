@@ -4,6 +4,7 @@ import Main from "@/views/Main";
 import Register from "@/views/Register.vue";
 import Home from "@/views/Home.vue";
 import PaymentDetail from "@/views/PaymentDetail.vue";
+import Share from "@/views/Share.vue";
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const router = new VueRouter({
             path: "/paymentdetail",
             name: "paymentdetail",
             component: PaymentDetail,
+        },
+        {
+            path: "/share",
+            name: "share",
+            component: Share,
         },
     ],
 });
