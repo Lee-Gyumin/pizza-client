@@ -175,6 +175,7 @@ header div {
   position: absolute;
   top: 50%;
   left: 50%;
+  padding: 0 10px;
   transform: translate(-50%, -50%);
   z-index: 999999;
   background-color: #ffeecb;

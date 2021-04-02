@@ -22,13 +22,13 @@
           </div>
         </div>
         <ul class="share-user">
-          <li class="user-list">
+          <li class="user-list" v-for="(data, idx) in list" :key="idx">
             <div class="profile">
               <img src="../assets/images/share-profile.png" alt="" />
             </div>
             <div>
-              <div>이규민</div>
-              <div>010-7469-1022</div>
+              <div>{{ data.name }}</div>
+              <div>{{ data.phone }}</div>
             </div>
             <div class="select">
               <img src="../assets/images/pizza-uncheck.svg" alt="" />
@@ -49,7 +49,7 @@ export default {
   data() {
     return {
       isActive: 1,
-      kakaoList: [
+      list: [
         { seq: "", name: "이규민", phone: "010-7469-1022" },
         { seq: "", name: "윤원식", phone: "010-3459-1122" },
         { seq: "", name: "오하진", phone: "010-7469-1322" },
@@ -58,20 +58,6 @@ export default {
         { seq: "", name: "윤원식", phone: "010-3459-1122" },
         { seq: "", name: "오하진", phone: "010-7469-1322" },
         { seq: "", name: "이규영", phone: "010-7139-5522" },
-      ],
-      phoneList: [
-        { seq: "", name: "윤원식", phone: "010-3459-1122" },
-        { seq: "", name: "오하진", phone: "010-7469-1322" },
-        { seq: "", name: "이규영", phone: "010-7139-5522" },
-        { seq: "", name: "이규민", phone: "010-7469-1022" },
-        { seq: "", name: "윤원식", phone: "010-3459-1122" },
-        { seq: "", name: "오하진", phone: "010-7469-1322" },
-        { seq: "", name: "윤원식", phone: "010-3459-1122" },
-        { seq: "", name: "오하진", phone: "010-7469-1322" },
-        { seq: "", name: "이규영", phone: "010-7139-5522" },
-        { seq: "", name: "이규민", phone: "010-7469-1022" },
-        { seq: "", name: "윤원식", phone: "010-3459-1122" },
-        { seq: "", name: "오하진", phone: "010-7469-1322" },
       ],
     };
   },
@@ -81,7 +67,14 @@ export default {
     },
     toggleActive(val) {
       this.isActive = val;
+      if (val === 1) {
+        this.getKakaoList();
+      } else {
+        this.getPhoneList();
+      }
     },
+    getKakaoList() {},
+    getPhoneList() {},
   },
 };
 </script>
@@ -103,7 +96,7 @@ header div {
   text-align: center;
 }
 .contents {
-  height: calc(100vh - 50px);
+  height: calc(100% - 50px);
   margin-top: 50px;
   padding: 0 !important;
 }
@@ -142,11 +135,11 @@ header div {
   justify-content: space-between;
   align-items: center;
   width: 80%;
-  height: 100px;
   margin: 0 auto;
   background-color: white;
   border-radius: 10px;
-  padding: 0 10px 0 30px;
+  padding: 20px 20px 20px 30px;
+  margin-bottom: 20px;
 }
 .share-user .user-list .profile {
   position: absolute;
@@ -160,8 +153,8 @@ header div {
   width: 100%;
 }
 .share-user .user-list .select {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
 }
 .info li {
   padding: 10px 20px;

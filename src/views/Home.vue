@@ -1,5 +1,6 @@
 <template>
   <div class="contents">
+    <hamburgur></hamburgur>
     <header>
       <div class="hamburgur">
         <img src="../assets/images/hamburgur.png" alt="" />
@@ -68,13 +69,17 @@
 </template>
 
 <script>
+import Hamburgur from "../components/Hamburgur.vue";
 export default {
   name: "home",
-  components: {},
+  components: {
+    Hamburgur,
+  },
   data() {
     return {
       isActive: 1,
       showFloat: false,
+      showHamburgur: false,
       pizzaList: [
         {
           name: "계림 닭도리탕",

@@ -95,7 +95,9 @@ button {
   width: 100vw;
   height: 100vh;
 }
-
+header {
+  z-index: 999999;
+}
 .container {
   height: 100%;
   overflow-y: auto;
@@ -197,6 +199,9 @@ footer .sns-login .kakao-login {
 @media (max-width: 340px) {
   html {
     font-size: 6px;
+  }
+  .toggle-btn span {
+    vertical-align: middle;
   }
 }
 </style>
