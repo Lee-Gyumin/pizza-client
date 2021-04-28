@@ -32,12 +32,12 @@
             <div>전화번호</div>
             <div class="certified">
               <div>
-                <input type="text" placeholder="'-' 없이 입력" /><button>
+                <input type="number" placeholder="'-' 없이 입력" /><button>
                   인증
                 </button>
               </div>
               <div>
-                <input type="text" placeholder="인증번호 입력" /><button>
+                <input type="number" placeholder="인증번호 입력" /><button>
                   확인
                 </button>
               </div>
@@ -153,6 +153,9 @@ header div {
 .info .certified input:first-child {
   border-radius: 0;
   border-bottom: 1px solid rgb(172, 172, 172);
+}
+.info .certified div:last-child input {
+  border-bottom: none;
 }
 input::placeholder {
   color: rgb(172, 172, 172);

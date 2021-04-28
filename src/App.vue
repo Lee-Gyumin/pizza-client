@@ -82,6 +82,9 @@ li {
 img {
   vertical-align: bottom;
 }
+input {
+  outline: none;
+}
 button {
   height: 40px;
   margin-bottom: 15px;

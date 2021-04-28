@@ -1,6 +1,9 @@
 <template>
-  <div class="menu-container" :class="{ active: showActive }">
-    <div class="menu-contents">
+  <div class="menu-container">
+    <div class="hamburgur">
+      <img src="../assets/images/hamburgur.png" @click="showToggle()" alt="" />
+    </div>
+    <div class="menu-contents" :class="{ active: showActive }">
       <div class="ham-menu">
         <ul class="nav">
           <li><div>이규민</div></li>
@@ -32,7 +35,7 @@
         <img src="../assets/images/close.png" alt="" />
       </div>
     </div>
-    <div class="bg" @click="showToggle()"></div>
+    <div class="bg" @click="showToggle()" :class="{ active: showActive }"></div>
   </div>
 </template>
 
@@ -40,7 +43,7 @@
 export default {
   data() {
     return {
-      showActive: true,
+      showActive: false,
       toggleActive: false,
     };
   },
@@ -57,17 +60,25 @@ export default {
 
 <style scoped>
 .menu-container {
-  display: none;
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
+}
+.hamburgur {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   width: 100%;
-  height: 100%;
+  height: 50px;
+  text-align: right;
 }
-.menu-container.active {
-  display: block;
+.hamburgur img {
+  width: 40px;
+  height: 40px;
 }
+
 .menu-contents {
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
@@ -76,6 +87,9 @@ export default {
   z-index: 99999;
   background-color: white;
   font-size: 2rem;
+}
+.menu-contents.active {
+  display: block;
 }
 .ham-menu {
   display: flex;
@@ -154,6 +168,7 @@ export default {
   width: 100%;
 }
 .bg {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -161,5 +176,8 @@ export default {
   height: 100%;
   background-color: gray;
   opacity: 0.5;
+}
+.bg.active {
+  display: block;
 }
 </style>

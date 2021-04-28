@@ -2,9 +2,6 @@
   <div class="contents">
     <hamburgur></hamburgur>
     <header>
-      <div class="hamburgur">
-        <img src="../assets/images/hamburgur.png" alt="" />
-      </div>
       <div class="profile">
         <div class="profile-img">
           <img src="../assets/images/profile.png" alt="" />
@@ -12,7 +9,7 @@
         <div class="desc">
           이규민님 <br />
           사용가능한 적립금<br />
-          <span>0</span><br />
+          <span>4000</span><br />
           입니다.
         </div>
       </div>
@@ -143,18 +140,7 @@ header {
   height: auto;
   text-align: center;
 }
-header .hamburgur {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  height: 50px;
-  text-align: right;
-}
-header .hamburgur img {
-  width: 40px;
-  height: 40px;
-}
+
 header .profile-img {
   position: relative;
   background-color: gainsboro;
@@ -292,7 +278,7 @@ footer.float-btn .button::after {
 footer .filter {
   position: absolute;
   width: 120px;
-  bottom: -340%;
+  bottom: -440%;
   right: 5px;
   background-color: white;
   padding: 5px;

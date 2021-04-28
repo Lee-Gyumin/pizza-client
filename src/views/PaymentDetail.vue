@@ -224,17 +224,11 @@ footer button {
   width: 100%;
   padding: 20px;
 }
-.share-pop .share-contents ul li {
-  margin-bottom: 30px;
-}
-.share-pop .share-contents li.check {
-  display: flex;
-  justify-content: end;
-  align-items: baseline;
-}
+
 .share-pop .share-contents li.check label {
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  height: 50px;
 }
 .share-pop .share-contents li.check input {
   width: 50px;
