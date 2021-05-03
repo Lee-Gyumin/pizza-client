@@ -7,9 +7,10 @@
           <img src="../assets/images/profile.png" alt="" />
         </div>
         <div class="desc">
-          이규민님 <br />
+          {{ this.userInfo.userName }}님 <br />
           사용가능한 적립금<br />
-          <span>4000</span><br />
+          <span>{{ this.userInfo.point }}</span
+          ><br />
           입니다.
         </div>
       </div>
@@ -67,6 +68,7 @@
 
 <script>
 import Hamburgur from "../components/Hamburgur.vue";
+import { mapState } from "vuex";
 export default {
   name: "home",
   components: {
@@ -108,6 +110,9 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    ...mapState({ userInfo: "userInfo" }),
   },
   methods: {
     toggleActive(val) {

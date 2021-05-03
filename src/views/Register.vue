@@ -12,27 +12,44 @@
         <ul class="info">
           <li>
             <div>이름</div>
-            <input type="text" placeholder="한글 또는 영문만 입력가능" />
+            <input
+              type="text"
+              v-model="userName"
+              placeholder="한글 또는 영문만 입력가능"
+            />
           </li>
           <li>
             <div>이메일</div>
-            <input type="text" placeholder="pizza@pizzapay.com" />
+            <input
+              type="text"
+              v-model="userEmail"
+              placeholder="pizza@pizzapay.com"
+            />
           </li>
           <li>
             <div>비밀번호</div>
             <div class="certified">
               <input
-                type="text"
+                type="password"
+                v-model="password"
                 placeholder="8자리 이상 영문자, 숫자, 특수문자 포함"
               />
-              <input type="text" placeholder="비밀번호 확인" />
+              <input
+                type="password"
+                v-model="passwordCheck"
+                placeholder="비밀번호 확인"
+              />
             </div>
           </li>
           <li>
             <div>전화번호</div>
             <div class="certified">
               <div>
-                <input type="number" placeholder="'-' 없이 입력" /><button>
+                <input
+                  type="number"
+                  v-model="phoneNumber"
+                  placeholder="'-' 없이 입력"
+                /><button>
                   인증
                 </button>
               </div>
@@ -71,17 +88,54 @@
 </template>
 
 <script>
+import * as api from "../api/index";
 export default {
   name: "Register",
   data() {
-    return {};
+    return {
+      userEmail: "",
+      password: "",
+      passwordCheck: "",
+      userName: "",
+      phoneNumber: "",
+    };
   },
   methods: {
     goBack() {
       this.$router.push({ name: "main" });
     },
-    submitJoin() {
-      this.$router.push({ name: "home" });
+    async submitJoin() {
+      if (!this.userEmail) {
+        alert("이메일을 입력하세요");
+      }
+      if (!this.userName) {
+        alert("이름을 입력하세요");
+      }
+      if (!this.phoneNumber) {
+        alert("핸드폰 번호를 입력하세요");
+      }
+      if (this.password.length >= 8) {
+        alert("비밀번호를 확인하세요");
+      }
+      if (this.password !== this.passwordCheck) {
+        alert("비밀번호와 비밀번호 확인이 다릅니다");
+      }
+      try {
+        const { data } = await api.user.save({
+          userEmail: this.userEmail,
+          password: this.password,
+          userName: this.userName,
+          phoneNumber: this.phoneNumber,
+        });
+        if (data.result) {
+          this.$router.push({ name: "main" });
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.log(error);
+        alert(error);
+      }
     },
   },
 };

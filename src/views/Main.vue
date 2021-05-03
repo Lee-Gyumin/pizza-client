@@ -7,15 +7,19 @@
     </div>
     <main>
       <div class="login">
-        <input type="text" placeholder="아이디(이메일주소)" />
-        <input type="password" placeholder="비밀번호" />
+        <input
+          v-model="userEmail"
+          type="text"
+          placeholder="아이디(이메일주소)"
+        />
+        <input v-model="password" type="password" placeholder="비밀번호" />
       </div>
       <div class="auto-login">
         <input type="checkbox" />
         <label for="">자동 로그인</label>
       </div>
       <div class="submit-login">
-        <button>로그인</button>
+        <button @click="submitLogin()">로그인</button>
         <button @click="register()">
           <router-link to="/register"></router-link> 회원가입
         </button>
@@ -35,16 +39,44 @@
 </template>
 
 <script>
+import * as api from "../api/index";
+import { mapMutations } from "vuex";
 // @ is an alias to /src
-
 export default {
   name: "Home",
   data() {
-    return {};
+    return {
+      userEmail: "",
+      password: "",
+    };
   },
   methods: {
+    ...mapMutations(["LOGIN"]),
     register() {
       this.$router.push({ name: "register" });
+    },
+    async submitLogin() {
+      if (!this.userEmail) {
+        alert("이메일을 입력하세요");
+      }
+      if (!this.password) {
+        alert("비밀번호를 입력하세요");
+      }
+      try {
+        const { data } = await api.auth.login({
+          userEmail: this.userEmail,
+          password: this.password,
+        });
+        if (data.result) {
+          this.LOGIN(data.data);
+          this.$router.push({ name: "home" });
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.log(error);
+        alert(error);
+      }
     },
   },
 };

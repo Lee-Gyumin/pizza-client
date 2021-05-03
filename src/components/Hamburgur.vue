@@ -6,9 +6,14 @@
     <div class="menu-contents" :class="{ active: showActive }">
       <div class="ham-menu">
         <ul class="nav">
-          <li><div>이규민</div></li>
           <li>
-            <div>적립금 <span class="point">4000</span>원</div>
+            <div>{{ this.userInfo.userName }}</div>
+          </li>
+          <li>
+            <div>
+              적립금 <span class="point">{{ this.userInfo.point }}</span
+              >원
+            </div>
           </li>
           <li class="flex">
             <div>알림설정</div>
@@ -27,7 +32,7 @@
           <li><div>이용약관</div></li>
           <li><div>개인정보 처리방침</div></li>
           <li><div>회사소개</div></li>
-          <li><div>로그아웃</div></li>
+          <li><div @click="logout()">로그아웃</div></li>
         </ul>
       </div>
 
@@ -40,6 +45,8 @@
 </template>
 
 <script>
+import * as api from "../api/index";
+import { mapState, mapMutations } from "vuex";
 export default {
   data() {
     return {
@@ -47,12 +54,29 @@ export default {
       toggleActive: false,
     };
   },
+  computed: {
+    ...mapState({ userInfo: "userInfo" }),
+  },
   methods: {
+    ...mapMutations(["LOGOUT"]),
     showToggle() {
       this.showActive = !this.showActive;
     },
     alarmToggle() {
       this.toggleActive = !this.toggleActive;
+    },
+    async logout() {
+      try {
+        const { data } = await api.auth.logout();
+        if (data.result) {
+          this.$router.push({ name: "main" });
+          this.LOGOUT();
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
 };
